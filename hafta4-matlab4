@@ -1,6 +1,6 @@
 clear;
 f = imread('building.tif');
-sigma = 25;
+sigma = 3;
 x = -3 * sigma : 3 * sigma;
 y = -3 * sigma : 3 * sigma;
 [M, N] = size(x);
@@ -12,6 +12,8 @@ for i=1:N
 end
 
 G = G * -1;
+toplam = sum(sum(G));
+G = G / toplam;
 result = imfilter(f,G);
 imshow(result);
 
